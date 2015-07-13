@@ -37,6 +37,8 @@ namespace Graphical_DomTurn
                 populate(name);
                 populated = true;
 
+                treeView1.ExpandAll();
+
                 timer1.Enabled = true;
             }
             else
