@@ -135,6 +135,11 @@ namespace Graphical_DomTurn
             ShowInputDialog(ref input);
 
             treeView1.SelectedNode.Text = input;
+
+            Game game = (Game)treeView1.SelectedNode.Tag;
+            game.name = input;
+
+            saver.changeName(game);
         }
 
         private static DialogResult ShowInputDialog(ref string input)

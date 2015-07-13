@@ -109,11 +109,35 @@ namespace Graphical_DomTurn
             writer.WriteLine(newGame.path);
             writer.Close();
 
+            System.Diagnostics.Debug.Print(newGame.path);
+
             writer = new StreamWriter(Path.Combine(newGame.path, "data.txt"));
             writer.WriteLine(newGame.name);
             writer.Close();
 
             return newGame;
+        }
+
+        public void changeName(Game game)
+        {
+            StreamReader reader = new StreamReader(Path.Combine(game.path, "data.txt"));
+
+            List<String> lines = new List<string>();
+
+            while (!reader.EndOfStream)
+            {
+                lines.Add(reader.ReadLine());
+            }
+            reader.Close();
+
+            StreamWriter writer = new StreamWriter(Path.Combine(game.path, "data.txt"));
+
+            writer.WriteLine(game.name);
+            for (int n = 1; n < lines.Count; n++)
+            {
+                writer.WriteLine(lines[n]);
+            }
+            writer.Close();
         }
 
         public Game getGame(String currentPath)
